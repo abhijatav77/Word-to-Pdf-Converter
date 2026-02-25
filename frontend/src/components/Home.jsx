@@ -2,7 +2,6 @@ import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
 import { FaFileWord } from 'react-icons/fa6'
-import BACKEND_URL from '../utils/utils.js'
 const Home = () => {
 
     const [selectedFile, setSelectedFile] = useState(null)
@@ -23,7 +22,7 @@ const Home = () => {
         const formData = new FormData()
         formData.append("file", selectedFile)
         try {
-            const response = await axios.post(`${BACKEND_URL}/convertfile`, formData, {
+            const response = await axios.post('http://localhost:3000/convertfile', formData, {
                 responseType: "blob",
             });
             const url = window.URL.createObjectURL(new Blob([response.data]))
